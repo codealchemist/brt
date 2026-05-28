@@ -1,5 +1,6 @@
 import { AudioPlayer } from './player.js'
 import { initGallery } from './gallery.js'
+import { version } from '../../package.json'
 
 // ─── Service Worker (PWA + offline) ───────────────────────
 if ('serviceWorker' in navigator) {
@@ -61,6 +62,9 @@ burger?.addEventListener('click', () => {
 // ─── Footer year ───────────────────────────────────────────
 const yearEl = document.getElementById('footerYear')
 if (yearEl) yearEl.textContent = new Date().getFullYear()
+
+const versionEl = document.getElementById('footerVersion')
+if (versionEl) versionEl.textContent = `v${version}`
 
 // ─── Audio Player ──────────────────────────────────────────
 const player = new AudioPlayer()

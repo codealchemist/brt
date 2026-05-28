@@ -1177,3 +1177,9 @@ cite {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
+
+.footer__version {
+  opacity: 0.45;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
