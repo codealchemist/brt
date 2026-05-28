@@ -2,23 +2,6 @@
  * Netlify Function: tracks
  * GET /api/tracks
  *
- * Lists all MP3 files in the configured Box folder.
- * Returns: [{ id, name, size, url }]
- *
- * Each track includes a direct streaming URL using Box's access_token query
- * parameter — no separate stream request needed.
- *
- * Env vars required (Cloudinary):
- *   CLOUDINARY_CLOUD_NAME
- *   CLOUDINARY_API_KEY
- *   CLOUDINARY_API_SECRET
- */
-
-// Cloudinary implementation - no Box dependencies
-/**
- * Netlify Function: tracks (Cloudinary)
- * GET /api/tracks
- *
  * Lists raw audio files (MP3) stored in Cloudinary and returns
  * [{ id, name, size, url }].
  *

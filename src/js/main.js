@@ -130,17 +130,11 @@ fetch('/api/config')
       const hasUrl = Boolean(finalSocial[key])
       if (!hasUrl) {
         // Preserve existing mailto in markup — only disable placeholder/hash links
-        const currentHref = el.getAttribute('href')
-        const isMailto =
-          typeof currentHref === 'string' && currentHref.startsWith('mailto:')
         el.classList.add('social-link--disabled')
         el.setAttribute('aria-disabled', 'true')
         el.setAttribute('tabindex', '-1')
-        if (!isMailto && (!currentHref || currentHref === '#')) {
-          // Remove href so it's not navigable and prevent any clicks
-          el.removeAttribute('href')
-          el.addEventListener('click', e => e.preventDefault())
-        }
+        el.removeAttribute('href')
+        el.addEventListener('click', e => e.preventDefault())
       }
     })
   })

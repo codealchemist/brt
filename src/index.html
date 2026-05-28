@@ -51,12 +51,26 @@
     <section class="hero" id="hero">
       <div class="hero__noise"></div>
       <div class="hero__content">
-        <p class="hero__tagline">Loud &middot; Raw &middot; Relentless</p>
-        <h1 class="hero__title">BRT</h1>
+        <img
+          src="./brt-logo-transparent-around-sm.png"
+          alt="BRT"
+          class="hero__logo"
+        />
+        <p class="hero__tagline">Brittle &middot; Raw &middot; Tear</p>
         <a href="#music" class="btn btn--primary">Listen Now</a>
-      </div>
-      <div class="hero__scroll-hint">
-        <span></span>
+        <div class="hero__scroll-hint">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -239,7 +253,9 @@
 
           <!-- Error state -->
           <div class="player__error" id="playerError" hidden>
-            <span>Could not load tracks. Check your Box configuration.</span>
+            <span
+              >Could not load tracks. Check your Cloudinary configuration.</span
+            >
           </div>
         </div>
 
@@ -258,24 +274,29 @@
         <div class="about__text">
           <h2 class="section-title">About</h2>
           <p class="about__lead">
-            BRT is heavy music stripped down to bone and concrete — no
-            frills, no filters, just riffs that hit like a sledgehammer and
-            rhythms that don't ask permission.
+            BRT is experimental bedroom metal forged in the aftermath of
+            survival. This isn't just a production project; it is a vital, sonic
+            catharsis for real-world trauma and deeply personal upheaval.
           </p>
           <p>
-            Forged in rehearsal rooms and baptized on loud stages, BRT draws
-            from the darkest corners of metal and hard rock. The sound is
-            dense, the grooves are relentless, and the volume is non-negotiable.
+            Operating entirely from a bedroom studio, the project utilizes the
+            digital landscapes of Suno tracks as a canvas to dissect pain,
+            memory, and endurance. That digital foundation is met with absolute
+            physical force: punishing, duplicated guitar tracks stacked into a
+            massive wall of sound, anchored by heavy, hand-recorded basslines.
+            BRT bridges the gap between human scars and digital
+            experimentation—turning heavy music into a weapon for survival.
           </p>
           <p>
-            Three letters. One mission: play hard, play loud, leave nothing
-            standing.
+            Three letters. One mission: forge the noise, face the wreckage,
+            shatter the walls that imprison your soul.
           </p>
         </div>
         <div class="about__visual">
           <div class="about__quote">
             <blockquote>
-              "If it's too loud, you're too far away."
+              "Forge the noise, face the wreckage, shatter the walls that
+              imprison your soul."
               <cite>— BRT</cite>
             </blockquote>
           </div>
@@ -391,9 +412,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <p>
-          &copy; <span id="footerYear"></span> BRT. All rights reserved.
-        </p>
+        <p>&copy; <span id="footerYear"></span> BRT. All rights reserved.</p>
       </div>
     </footer>
 

@@ -1,6 +1,6 @@
 /**
  * Gallery with lightbox
- * Loads images from /api/gallery (Box folder), falls back to HTML placeholders.
+ * Loads images from /api/gallery, falls back to HTML placeholders.
  */
 export async function initGallery() {
   const grid = document.getElementById('gallery-grid')
@@ -12,7 +12,7 @@ export async function initGallery() {
 
   if (!grid || !lightbox) return
 
-  // Try to load images from Box
+  // Try to load images from the gallery API
   try {
     const res = await fetch('/api/gallery')
     if (res.ok) {

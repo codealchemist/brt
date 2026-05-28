@@ -3,7 +3,7 @@
  * GET /api/config
  *
  * Returns public site configuration (social links, etc.).
- * Does NOT expose sensitive env vars (Box tokens).
+ * Does NOT expose sensitive env vars.
  */
 
 exports.handler = async function (event) {
@@ -31,8 +31,8 @@ exports.handler = async function (event) {
       email: SOCIAL_EMAIL || null
     },
     site: {
-      title: SITE_TITLE || 'Panta Rei',
-      description: SITE_DESCRIPTION || 'Panta Rei — Official website',
+      title: SITE_TITLE || 'BRT',
+      description: SITE_DESCRIPTION || 'BRT — Official website',
       url: SITE_URL || null,
       ogImage: SITE_OG_IMAGE || '/images/og-default.jpg',
       themeColor: SITE_THEME_COLOR || '#0d0d0d'

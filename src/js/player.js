@@ -135,7 +135,7 @@ export class AudioPlayer {
 
   _renderTracklist() {
     if (this.tracks.length === 0) {
-      this.tracklistEmptyEl.textContent = 'No MP3 files found in the configured Box folder.'
+      this.tracklistEmptyEl.textContent = 'No tracks found.'
       return
     }
     this.tracklistEmptyEl.remove()
