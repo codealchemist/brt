@@ -1,5 +1,6 @@
 import { AudioPlayer } from './player.js'
 import { initGallery } from './gallery.js'
+import { initLyrics } from './lyrics.js'
 import { version } from '../../package.json'
 
 // ─── Service Worker (PWA + offline) ───────────────────────
@@ -72,6 +73,7 @@ player.init()
 
 // ─── Gallery ───────────────────────────────────────────────
 initGallery()
+initLyrics()
 
 // ─── Social links ──────────────────────────────────────────
 fetch('/api/config')
