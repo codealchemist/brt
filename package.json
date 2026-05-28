@@ -1,0 +1,30 @@
+{
+  "name": "brt",
+  "version": "1.0.2",
+  "description": "BRT website",
+  "keywords": [
+    "BRT",
+    "Music"
+  ],
+  "homepage": "https://github.com/codealchemist/brt#readme",
+  "bugs": {
+    "url": "https://github.com/codealchemist/brt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codealchemist/brt.git"
+  },
+  "license": "ISC",
+  "author": "Alberto Miranda",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && netlify deploy --prod"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "netlify-cli": "^17.0.0"
+  }
+}
