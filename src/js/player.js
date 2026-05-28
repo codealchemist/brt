@@ -37,7 +37,8 @@ export class AudioPlayer {
     try {
       const res = await fetch('/api/tracks')
       const data = await res.json()
-      if (!res.ok) throw new Error(data.details || data.error || `HTTP ${res.status}`)
+      if (!res.ok)
+        throw new Error(data.details || data.error || `HTTP ${res.status}`)
       this.tracks = data
       this._renderTracklist()
     } catch (err) {
@@ -77,7 +78,7 @@ export class AudioPlayer {
       this.audio.volume = parseFloat(this.volumeSlider.value)
     })
 
-    this.progressBar.addEventListener('click', (e) => {
+    this.progressBar.addEventListener('click', e => {
       if (!this.audio.duration) return
       const rect = this.progressBar.getBoundingClientRect()
       const ratio = (e.clientX - rect.left) / rect.width
@@ -106,7 +107,8 @@ export class AudioPlayer {
   }
 
   _prevTrack() {
-    const idx = this.currentIndex > 0 ? this.currentIndex - 1 : this.tracks.length - 1
+    const idx =
+      this.currentIndex > 0 ? this.currentIndex - 1 : this.tracks.length - 1
     this.playTrack(idx)
   }
 
@@ -171,13 +173,16 @@ export class AudioPlayer {
 
   _showError(show, message) {
     this.errorEl.hidden = !show
-    if (show && message) this.errorEl.querySelector('span').textContent = message
+    if (show && message)
+      this.errorEl.querySelector('span').textContent = message
   }
 
   _formatTime(seconds) {
     if (!seconds || isNaN(seconds)) return '0:00'
     const m = Math.floor(seconds / 60)
-    const s = Math.floor(seconds % 60).toString().padStart(2, '0')
+    const s = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, '0')
     return `${m}:${s}`
   }
 
@@ -188,6 +193,9 @@ export class AudioPlayer {
   }
 
   _cleanName(filename) {
-    return filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')
+    return filename
+      .replace(/\.[^.]+$/, '') // Remove extension.
+      .replace('-master', '') // Remove `-master`.
+    // .replace(/[-_]/g, ' ') // Remove dashes.
   }
 }
