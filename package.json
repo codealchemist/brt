@@ -21,6 +21,7 @@
     "dev": "netlify dev",
     "build": "vite build",
     "preview": "vite preview",
+    "sync-env": "node scripts/sync-env.js",
     "deploy": "npm run build && netlify deploy --prod"
   },
   "devDependencies": {
