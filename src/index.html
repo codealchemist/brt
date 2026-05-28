@@ -9,6 +9,10 @@
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0d0d0d" />
     <link rel="canonical" href="https://brt.netlify.app" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="BRT" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- Open Graph / Social -->
     <meta property="og:title" content="BRT" />
@@ -31,6 +35,8 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="offline-banner" id="offlineBanner" hidden>Offline — playing from cache</div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
       <div class="nav__logo">
@@ -265,6 +271,9 @@
             No tracks loaded yet.
           </div>
         </div>
+
+        <!-- Offline download controls (populated by player.js) -->
+        <div class="offline-controls" id="offlineControls" hidden></div>
       </div>
     </section>
 

@@ -1,6 +1,24 @@
 import { AudioPlayer } from './player.js'
 import { initGallery } from './gallery.js'
 
+// ─── Service Worker (PWA + offline) ───────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      console.warn('SW registration failed:', err)
+    })
+  })
+}
+
+// ─── Offline banner ────────────────────────────────────────
+const offlineBanner = document.getElementById('offlineBanner')
+function syncOnlineState() {
+  if (offlineBanner) offlineBanner.hidden = navigator.onLine
+}
+window.addEventListener('online', syncOnlineState)
+window.addEventListener('offline', syncOnlineState)
+syncOnlineState()
+
 // ─── Sticky nav shadow on scroll ──────────────────────────
 const nav = document.getElementById('nav')
 window.addEventListener(
