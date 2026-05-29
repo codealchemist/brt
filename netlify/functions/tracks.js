@@ -129,7 +129,8 @@ exports.handler = async function (event) {
     const tracks = resources
       .filter(
         r =>
-          r.format === 'mp3' || (r.secure_url && r.secure_url.endsWith('.mp3'))
+          r.bytes > 0 &&
+          (r.format === 'mp3' || (r.secure_url && r.secure_url.endsWith('.mp3')))
       )
       .map(r => ({
         id: r.public_id,
