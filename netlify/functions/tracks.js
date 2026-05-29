@@ -45,7 +45,7 @@ exports.handler = async function (event) {
       `${CLOUDINARY_API_KEY}:${CLOUDINARY_API_SECRET}`
     ).toString('base64')
     const prefix = CLOUDINARY_TRACKS_FOLDER
-      ? `${encodeURIComponent(CLOUDINARY_TRACKS_FOLDER)}`
+      ? encodeURIComponent(CLOUDINARY_TRACKS_FOLDER.replace(/\/$/, '')) + '/'
       : ''
     const url = `${CLOUDINARY_BASE}/${CLOUDINARY_CLOUD_NAME}/resources/raw/upload?max_results=500${prefix ? `&prefix=${prefix}` : ''}`
 
