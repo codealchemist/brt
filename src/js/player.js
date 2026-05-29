@@ -1,3 +1,4 @@
+import { cleanName, formatSize } from './utils.js'
 import {
   downloadTrack,
   getTrackBlob,
@@ -339,8 +340,8 @@ export class AudioPlayer {
       item.dataset.index = i
       item.innerHTML = `
         <span class="tracklist__num">${i + 1}</span>
-        <span class="tracklist__name">${this._cleanName(track.name)}</span>
-        <span class="tracklist__size">${this._formatSize(track.size)}</span>
+        <span class="tracklist__name">${cleanName(track.name)}</span>
+        <span class="tracklist__size">${formatSize(track.size)}</span>
         <button class="tracklist__offline-btn" data-index="${i}" data-state="${track.offlineState}" aria-label="${label}" title="${label}">${icon}</button>
       `
       item.addEventListener('click', e => {
@@ -465,7 +466,7 @@ export class AudioPlayer {
   }
 
   _updateInfo(name, index) {
-    this.trackNameEl.textContent = this._cleanName(name)
+    this.trackNameEl.textContent = cleanName(name)
     this.trackIndexEl.textContent = `${index + 1} / ${this.tracks.length}`
   }
 
@@ -496,12 +497,4 @@ export class AudioPlayer {
       .padStart(2, '0')}`
   }
 
-  _formatSize(bytes) {
-    return bytes ? `${(bytes / 1048576).toFixed(1)} MB` : ''
-  }
-
-  _cleanName(filename) {
-    return filename.replace(/\.[^.]+$/, '').replace('-master', '') // Remove master.
-    // .replace(/[-_]/g, ' ') // Remove dashes.
-  }
 }

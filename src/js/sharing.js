@@ -1,10 +1,4 @@
-function cleanName(filename) {
-  return filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')
-}
-
-function formatSize(bytes) {
-  return bytes ? `${(bytes / 1048576).toFixed(1)} MB` : ''
-}
+import { cleanName, formatSize } from './utils.js'
 
 export async function initSharing() {
   let tracks = []
