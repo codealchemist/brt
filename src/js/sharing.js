@@ -10,10 +10,10 @@ export async function initSharing() {
     return
   }
 
-  if (!tracks.length) return
+  // if (!tracks.length) return
 
   const section = document.getElementById('sharing')
-  const listEl  = document.getElementById('sharingList')
+  const listEl = document.getElementById('sharingList')
   if (!section || !listEl) return
 
   section.hidden = false

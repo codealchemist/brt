@@ -10,17 +10,22 @@ function buildPrefix(folder) {
 }
 
 async function fetchMp3Resources(cloudName, auth, prefix) {
-  const qs  = `max_results=500${prefix ? `&prefix=${prefix}` : ''}`
-  const url = `${CLOUDINARY_BASE}/${cloudName}/resources/raw/upload?${qs}`
+  const qs = `max_results=500${prefix ? `&prefix=${prefix}` : ''}`
 
-  const res = await fetch(url, { headers: { Authorization: `Basic ${auth}` } })
-  if (!res.ok) {
-    const body = await res.text()
-    throw Object.assign(new Error(`Cloudinary API error`), { status: res.status, body })
-  }
+  const [rawRes, videoRes] = await Promise.all([
+    fetch(`${CLOUDINARY_BASE}/${cloudName}/resources/raw/upload?${qs}`,   { headers: { Authorization: `Basic ${auth}` } }),
+    fetch(`${CLOUDINARY_BASE}/${cloudName}/resources/video/upload?${qs}`, { headers: { Authorization: `Basic ${auth}` } }),
+  ])
 
-  const { resources = [] } = await res.json()
-  return resources.filter(
+  const [rawData, videoData] = await Promise.all([
+    rawRes.ok   ? rawRes.json()   : Promise.resolve({ resources: [] }),
+    videoRes.ok ? videoRes.json() : Promise.resolve({ resources: [] }),
+  ])
+
+  if (!rawRes.ok)   console.error('cloudinary: raw endpoint error',   rawRes.status)
+  if (!videoRes.ok) console.error('cloudinary: video endpoint error', videoRes.status)
+
+  return [...(rawData.resources ?? []), ...(videoData.resources ?? [])].filter(
     r => r.bytes > 0 && (r.format === 'mp3' || r.secure_url?.endsWith('.mp3'))
   )
 }
