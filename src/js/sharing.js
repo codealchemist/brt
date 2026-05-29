@@ -10,13 +10,16 @@ export async function initSharing() {
     return
   }
 
-  // if (!tracks.length) return
-
   const section = document.getElementById('sharing')
   const listEl = document.getElementById('sharingList')
   if (!section || !listEl) return
 
   section.hidden = false
+
+  if (!tracks.length) {
+    listEl.innerHTML = '<p class="sharing-empty">No tracks available.</p>'
+    return
+  }
 
   tracks.forEach(track => {
     const item = document.createElement('div')

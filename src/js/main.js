@@ -33,6 +33,30 @@ window.addEventListener(
   { passive: true }
 )
 
+// ─── Active nav section highlight ─────────────────────────
+const sectionAnchors = Array.from(
+  document.querySelectorAll('.nav__links a[href^="#"]')
+)
+
+function updateActiveSection() {
+  const atBottom =
+    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10
+  const threshold = atBottom
+    ? document.documentElement.scrollHeight
+    : window.scrollY + window.innerHeight * 0.4
+
+  let active = null
+  for (const a of sectionAnchors) {
+    const section = document.getElementById(a.getAttribute('href').slice(1))
+    if (!section || section.hidden) continue
+    if (section.offsetTop <= threshold) active = a
+  }
+  sectionAnchors.forEach(a => a.classList.toggle('is-active', a === active))
+}
+
+window.addEventListener('scroll', updateActiveSection, { passive: true })
+updateActiveSection()
+
 // ─── Mobile burger menu ────────────────────────────────────
 const burger = document.getElementById('navBurger')
 const navLinks = document.querySelector('.nav__links')
