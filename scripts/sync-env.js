@@ -1,15 +1,13 @@
 #!/usr/bin/env node
-// Reads CLOUDINARY_* vars from .env and pushes them to the linked Netlify site.
+// Reads all vars from .env and pushes them to the linked Netlify site.
 const { spawnSync } = require('child_process')
 const fs = require('fs')
 
 const raw = fs.readFileSync('.env', 'utf8')
 
-// Sync cloudinary env vars only for now.
 for (const line of raw.split('\n')) {
   const trimmed = line.trim()
-  if (!trimmed || trimmed.startsWith('#') || !trimmed.startsWith('CLOUDINARY_'))
-    continue
+  if (!trimmed || trimmed.startsWith('#')) continue
 
   const eq = trimmed.indexOf('=')
   if (eq === -1) continue
